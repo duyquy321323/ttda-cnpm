@@ -1,0 +1,36 @@
+.container--footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+    background: rgb(10, 182, 245);
+    color: #F5F5F5;
+    font-family: var(--fontvietnam);
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: auto;
+}
+
+.container--footer .left--footer{
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.container--footer .left--footer p{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all ease-in-out 0.2s;
+}
+
+.container--footer .left--footer p:hover{
+    transform: scaleX(1.03);
+    cursor: pointer;
+}
+
+.container--footer .left--footer p span{
+    color: #FFC107;
+}
