@@ -1,0 +1,82 @@
+.container--form{
+    margin-top: 465px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-bottom: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: #E0F7FA;
+    border-radius: 30px 30px 0 0;
+}
+
+.container--form .back-btn{
+    font-family: Poppins;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container--form .container--form__title{
+    color: #00AEEF;
+    text-align: center;
+    font-family: var(--fontvietnam);
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-top: 11px;
+}
+
+.container--form .container--form__content{
+    font-family: var(--fontvietnam);
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+    text-align: center;
+    margin-top: 16px;
+}
+
+.container--form .container--form__content span{
+    color: #00AEEF;
+}
+
+.container--form .container--form__content span:first-of-type{
+    color: #FFC107;
+}
+
+.container--form .form{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.container--form .form .navigation{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    color: #00AEEF;
+    text-align: right;
+    font-family: var(--fontvietnam);
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container--form .form .navigation p:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.container--form .form .navigation p:active{
+    cursor: pointer;
+    text-decoration: underline;
+    color: #0394c9;
+}

@@ -25,7 +25,7 @@ body {
   font-family: "Be Vietnam Pro", sans-serif;
   background-image: url("./assets/img/Background.svg");
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% auto;
   background-color: #ffdfd3;
   height: 100vh;
 }
