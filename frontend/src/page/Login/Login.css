@@ -19,7 +19,7 @@
 }
 
 .container--form .container--form__title{
-    color: #00AEEF;
+    color: var(--violetcolor);
     text-align: center;
     font-family: var(--fontvietnam);
     font-size: 80px;
@@ -40,17 +40,17 @@
 }
 
 .container--form .container--form__content span{
-    color: #00AEEF;
+    color: var(--violetcolor);
 }
 
 .container--form .container--form__content span:first-of-type{
-    color: #FFC107;
+    color: var(--orangecolor);
 }
 
 .container--form .form{
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 50px;
     width: 800px;
     margin: 0 auto;
     margin-top: 40px;
@@ -61,7 +61,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0 16px;
-    color: #00AEEF;
+    color: var(--violetcolor);
     text-align: right;
     font-family: var(--fontvietnam);
     font-size: 30px;

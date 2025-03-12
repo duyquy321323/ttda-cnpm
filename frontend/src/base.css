@@ -2,6 +2,8 @@
 
 :root {
   --fontvietnam: "Be Vietnam Pro", sans-serif;
+  --violetcolor: #00AEEF;
+  --orangecolor: #FFC107;
 }
 
 * {
@@ -26,13 +28,12 @@ body {
   background-image: url("./assets/img/Background.svg");
   background-repeat: no-repeat;
   background-size: 100% auto;
-  background-color: #ffdfd3;
   height: 100vh;
 }
 
 #root{
   height: 100vh;
-  flex: 1; /* Đẩy footer xuống */
+  flex: 1;
   display: flex;
   flex-direction: column;
 }

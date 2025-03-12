@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import BackButton from '../../component/BackButton';
 import PasswordField from '../../component/PasswordField';
 import SubmitFormButton from '../../component/SubmitFormButton';
 import TextFieldForm from '../../component/TextFieldForm';
 import './Login.css';
-import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
 
@@ -37,13 +37,13 @@ const Login = () => {
                     Đăng nhập
                 </h1>
                 <h2 className="container--form__content">
-                        <span>Lum</span>
+                        <span>Lumi</span>
                         <span>Home </span> 
                         xin chào!!!
                 </h2>
                 <form className="form" onSubmit={handleSubmit}>
-                    <TextFieldForm title="Nhập số điện thoại..." name="phoneNumber" onChange={handChange} />
-                    <PasswordField onChange={handChange} />
+                    <TextFieldForm title="Nhập số điện thoại..." name="phoneNumber" onChange={handChange} type="number"/>
+                    <PasswordField onChange={handChange} name="password" title="Nhập mật khẩu..." />
                     <div className="navigation">
                         <p onClick={() => navigate("/forget-password")}>Quên mật khẩu?</p>
                         <p onClick={() => navigate("/register")}>Chưa có tài khoản?</p>

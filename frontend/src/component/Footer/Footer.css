@@ -32,5 +32,5 @@
 }
 
 .container--footer .left--footer p span{
-    color: #FFC107;
+    color: var(--orangecolor);
 }

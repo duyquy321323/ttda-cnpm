@@ -8,6 +8,7 @@ import Introduction from "../page/Introduction";
 import LightRBG from "../page/LightRBG";
 import Login from "../page/Login";
 import MiniFan from "../page/MiniFan";
+import NotFound from "../page/NotFound";
 import Register from "../page/Register";
 import Relay from "../page/Relay";
 import Remote from "../page/Remote";
@@ -73,6 +74,10 @@ const Routes = () => {
                     element: <ForgetPassword/>
                 }
             ]
+        },
+        {
+            path: '*',
+            element: <NotFound/>
         }
     ]);
     return route;

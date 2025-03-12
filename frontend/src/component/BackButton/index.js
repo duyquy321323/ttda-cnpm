@@ -9,7 +9,7 @@ const BackButtonStyled = styled('div')({
     fontStyle: "normal",
     fontWeight: 700,
     lineHeight: "normal",
-    color: '#00AEEF',
+    color: 'var(--violetcolor)',
     textTransform: 'none',
     display: 'flex',
     alignItems: 'center',
@@ -23,7 +23,7 @@ const BackButton = (props) => {
     return(
         <>
             <BackButtonStyled>
-                <IconButton sx={{color: '#00AEEF'}} onClick={() => navigate(navlink)}>
+                <IconButton sx={{color: 'var(--violetcolor)'}} onClick={() => navigate(navlink)}>
                     <IoArrowBackCircle size={48} />
                 </IconButton>
                 {title}

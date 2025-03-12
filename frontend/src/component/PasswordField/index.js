@@ -4,7 +4,7 @@ import { useState } from "react";
 
 const PasswordField = (props) => {
 
-  const { onChange } = props;
+  const { onChange, name, title } = props;
   const [showPassword, setShowPassword] = useState(false);
 
   const handleClickShowPassword = () => setShowPassword((prev) => !prev);
@@ -14,12 +14,16 @@ const PasswordField = (props) => {
     <FormControl variant="outlined" sx={{ width: "100%" }}>
       <InputLabel
         sx={{
-          color: "#121212",
-          fontFamily: "var(--fontvietnam)",
-          fontSize: "18px",
-        }}
+            color: "#121212",
+            fontFamily: "var(--fontvietnam)",
+            fontSize: "30px",
+            transform: "translate(26px, 24px) scale(1)", // Đẩy xuống khi chưa nhập
+              "&.MuiInputLabel-shrink": {
+                  transform: "translate(14px, -6px) scale(0.40)", // Khi focus
+              },
+          }}
       >
-        Nhập mật khẩu...
+        {title}
       </InputLabel>
       <OutlinedInput
         type={showPassword ? "text" : "password"}
@@ -31,17 +35,18 @@ const PasswordField = (props) => {
               onMouseDown={handleMouseDownPassword}
               edge="end"
             >
-              {showPassword ? <VisibilityOff sx={{color: '#00AEEF'}} /> : <Visibility sx={{color: '#00AEEF'}} />}
+              {showPassword ? <VisibilityOff sx={{color: 'var(--violetcolor)', fontSize: '48px'}} /> : <Visibility sx={{color: 'var(--violetcolor)', fontSize: '48px'}} />}
             </IconButton>
           </InputAdornment>
         }
-        label="Nhập mật khẩu..."
-        name="password"
+        label={title}
+        name={name}
         onChange={onChange}
         sx={{
           borderRadius: "15px",
+          height: '100px',
           "& .MuiOutlinedInput-notchedOutline": {
-            border: "3px solid #00AEEF",
+            border: "3px solid var(--violetcolor)",
           },
           "&:hover .MuiOutlinedInput-notchedOutline": {
             border: "3px solid rgb(3, 169, 230)",
@@ -52,12 +57,13 @@ const PasswordField = (props) => {
           "& .MuiInputBase-input": {
             color: "#121212",
             fontFamily: "var(--fontvietnam)",
-            fontSize: "18px",
+            fontSize: "30px",
+            paddingLeft: "26px",
           },
           "& .MuiInputBase-input::placeholder": {
             color: "#9E9E9E",
             fontFamily: "var(--fontvietnam)",
-            fontSize: "18px",
+            fontSize: "30px",
             opacity: 1,
           },
         }}
