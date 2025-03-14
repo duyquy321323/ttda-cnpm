@@ -1,19 +1,16 @@
 import { useRoutes } from "react-router-dom";
 import Layout from "../layout";
-import Connect from "../page/Connect";
+import Environment from "../page/Environment";
+import FanRelayServo from "../page/FanRelayServo";
 import ForgetPassword from "../page/ForgetPassword";
 import Home from "../page/Home";
 import InformationAccount from "../page/InformationAccount";
 import Introduction from "../page/Introduction";
 import LightRBG from "../page/LightRBG";
 import Login from "../page/Login";
-import MiniFan from "../page/MiniFan";
 import NotFound from "../page/NotFound";
+import Notification from "../page/Notification";
 import Register from "../page/Register";
-import Relay from "../page/Relay";
-import Remote from "../page/Remote";
-import Sensor from "../page/Sensor";
-import Servo from "../page/Servo";
 
 const Routes = () => {
     const route = useRoutes([
@@ -30,8 +27,8 @@ const Routes = () => {
                     element: <InformationAccount/>
                 },
                 {
-                    path: '/connect',
-                    element: <Connect/>
+                    path: '/environment',
+                    element: <Environment/>
                 },
                 {
                     path: '/introduction',
@@ -42,24 +39,8 @@ const Routes = () => {
                     element: <LightRBG/>
                 },
                 {
-                    path: '/mini-fan',
-                    element: <MiniFan/>
-                },
-                {
-                    path: '/relay',
-                    element: <Relay/>
-                },
-                {
-                    path: '/servo',
-                    element: <Servo/>
-                },
-                {
-                    path: '/sensor',
-                    element: <Sensor/>
-                },
-                {
-                    path: '/remote',
-                    element: <Remote/>
+                    path: '/fan-relay-servo',
+                    element: <FanRelayServo/>
                 },
                 {
                     path: '/login',
@@ -72,6 +53,10 @@ const Routes = () => {
                 {
                     path: '/forget-password',
                     element: <ForgetPassword/>
+                },
+                {
+                    path: '/notification',
+                    element: <Notification/>
                 }
             ]
         },
