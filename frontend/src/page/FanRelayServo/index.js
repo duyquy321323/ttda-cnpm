@@ -32,7 +32,7 @@ const FanRelayServo = () => {
                     QUẠT MINI - RELAY - SERVO CỬA
                 </h1>
                 <p className = "introText">
-                    LumiHome hân hạnh được hỗ trợ điều khiển "Quạt Mini - Relay - Servo Cửa" trong hệ thống nhà của bạn!
+                    <span style={{ color: "#FFC107" }}>Lumi</span><span style={{ color: "#00AEEF" }}>Home</span> hân hạnh được hỗ trợ điều khiển "Quạt Mini - Relay - Servo Cửa" trong hệ thống nhà của bạn!
                 </p>
             </div>
 
@@ -44,7 +44,7 @@ const FanRelayServo = () => {
                         <img src={fanIcon} alt="Fan Icon" className="icon" />
                     </div>
                     <h2 className="sectionTitle">
-                        Điều chỉnh tốc độ Quạt Mini:
+                        Điều chỉnh tốc độ <span style={{ color: "#00AEEF" }}>Quạt Mini:</span>
                     </h2>
                     <div className = "sliderContainer">
                         <span className = "minText">
@@ -67,7 +67,7 @@ const FanRelayServo = () => {
                 {/* Servo Cửa */}
                 <div className = "section">
                     <h2 className = "sectionTitle">
-                        Bật / Tắt Servo Cửa:
+                        Bật / Tắt <span style={{ color: "#00AEEF" }}>Servo Cửa:</span>
                     </h2>
                     <button className={`toggleButton ${isOn1 ? "on" : "off"}`} onClick={toggleSwitch1}>
                         <div className="toggleCircle" style={{ transform: isOn1? "translateX(50px)" : "translateX(0)" }} />
@@ -83,7 +83,7 @@ const FanRelayServo = () => {
                         <img src={relayIcon} alt="Relay Icon" className="icon" />
                     </div>
                     <h2 className = "sectionTitle">
-                        Bật / Tắt Relay:
+                        Bật / Tắt <span style={{ color: "#00AEEF" }}>Relay:</span>
                     </h2>
                     <button className={`toggleButton ${isOn2 ? "on" : "off"}`} onClick={toggleSwitch2}>
                         <div className="toggleCircle" style={{ transform: isOn2? "translateX(50px)" : "translateX(0)" }} />
