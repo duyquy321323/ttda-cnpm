@@ -1,0 +1,38 @@
+.container--intro{
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fontvietnam);
+}
+
+.container--intro .container--intro__title{
+    color: var(--violetcolor);
+    font-size: 70px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container--intro .container--intro__logo{
+    background-color: var(--orangecolor);
+    padding: 38.5px;
+    border-radius: 50%;
+}
+
+.container--intro .container--intro__content{
+    color: #121212;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.container--intro .container--intro__content span{
+    color: var(--violetcolor);
+}
+
+.container--intro .container--intro__content span:first-of-type{
+    color: var(--orangecolor);
+}
