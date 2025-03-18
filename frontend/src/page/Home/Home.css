@@ -1,0 +1,34 @@
+.container--home.container--3p{
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto;
+    gap: 200px;
+    margin-top: 421px;
+}
+
+.container--home.container--3p .container--tab{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    color: #121212;
+
+    text-align: center;
+    font-family: var(--fontvietnam);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    cursor: pointer;
+}
+
+.container--home.container--3p .container--tab .logo{
+    width: 250px;
+    height: 250px;
+    background-color: var(--orangecolor);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

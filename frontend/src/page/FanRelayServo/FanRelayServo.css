@@ -1,16 +1,19 @@
-.container {
+.container--fanrelayservo {
   background-color: #E0F7FA;
   width: 1600px;
   height: 1100px;
   border-radius: 30px;
   margin-top: 70px;
   padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--fontvietnam);
 }
 
-.logo{
+.intro .logo{
   width: 200px;
   height: 200px;
-  background-color: #FFC107;
+  background-color: var(--orangecolor);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -21,7 +24,7 @@
 .introTitle {
   font-size: 60px;
   font-weight: bold;
-  color: #00AEEF;
+  color: var(--violetcolor);
   text-align: center;
   margin-top: 30px;
 }
@@ -54,7 +57,7 @@
 .sectionTitle {
   font-size: 35px;
   font-weight: bold;
-  color: #FFC107;
+  color: var(--orangecolor);
   margin-bottom: 10px;
 }
 
@@ -97,7 +100,7 @@
 .iconContainer {
   width: 200px;
   height: 200px;
-  background-color: #FFC107;
+  background-color: var(--orangecolor);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -121,7 +124,7 @@
   width: 200px;
   appearance: none;
   height: 5px;
-  background: #FFC107;
+  background: var(--orangecolor);
   border-radius: 5px;
   outline: none;
   cursor: pointer;
