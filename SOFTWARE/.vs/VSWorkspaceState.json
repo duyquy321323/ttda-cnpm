@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\src",
+    "\\backend\\src\\controllers",
+    "\\backend\\src\\routes",
+    "\\backend\\src\\services",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\page",
+    "\\frontend\\src\\page\\Environment"
+  ],
+  "SelectedNode": "\\backend\\src\\controllers\\environmentController.js",
+  "PreviewInSolutionExplorer": false
+}
