@@ -1,13 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { CiCircleInfo, CiCloud, CiGlobe } from "react-icons/ci";
+import { CiCircleInfo, CiCloud, CiGlobe, CiHome } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
 
-    const [temperature, setTemperature] = useState(null);
-    const navigate = useNavigate();
+  const [temperature, setTemperature] = useState(null);
+  const navigate = useNavigate();
   
   const API_KEY = "d23679977faf0745acedc09ae6801f5c";
   const CITY = "Di An,VN";
@@ -36,10 +36,17 @@ const Header = () => {
     return (
         <>
             <section className="container--header">
-                <div className="content">
+                <div className="container--header__left">
+                  <div className="content">
                     <CiCloud size={48}/>
                     <p>{temperature}&nbsp;&deg;C</p>
+                  </div>
+                  <div className="content" onClick={() => navigate("/")}> 
+                      <CiHome size={48}/>
+                      <p>Home</p>
+                  </div>
                 </div>
+                
                 <div className="container--header__right">
                     <div className="content">
                     <CiCircleInfo size={48}/>
