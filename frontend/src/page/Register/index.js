@@ -9,28 +9,29 @@ import SubmitFormButton from "../../component/SubmitFormButton";
 const Register = () => {
 
     const [formRegister, setFormRegister] = useState({
-            phoneNumber: '',
+            email: '',
             password: '',
         });
     
-        const navigate = useNavigate();
-    
-        const handleSubmit = (e) => {
-            e.preventDefault();
-        }
-    
-        const handChange = (e) => {
-            const { name, value } = e.target;
-            setFormRegister({
-                ...formRegister,
-                [name]: value,
-            });
-        }
+    const navigate = useNavigate();
 
-        const handleSendOTP = async () => {
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    }
 
-        }
+    const handleChange = (e) => {
+        console.log("Input changed:", e.target.name, e.target.value);
+        const { name, value } = e.target;
+        setFormRegister({
+            ...formRegister,
+            [name]: value,
+        });
+    };
     
+
+    const handleSendOTP = async () => {
+
+    }
 
     return (
         <>
@@ -39,7 +40,7 @@ const Register = () => {
                     <BackButton title="Đăng nhập" navlink="/login"/>
                 </div>
                 <h1 className="container--form__title">
-                    Đăng kí
+                    Đăng ký
                 </h1>
                 <h2 className="container--form__content">
                         <span>Lumi</span>
@@ -47,11 +48,11 @@ const Register = () => {
                         hân hạnh đồng hành cùng bạn!!!
                 </h2>
                 <form className="form" onSubmit={handleSubmit}>
-                    <SendOTPField title="Nhập số điện thoại..." name="phoneNumber" onChange={handChange} type="number" onClickButton={handleSendOTP}/>
+                    <SendOTPField title="Nhập email..." name="email" onChange={handleChange} type="email" onClickButton={handleSendOTP}/>
                     <OTPInput name="otp" onComplete={(otp) => {alert(`Mã OTP của bạn là: ${otp}`);}}/>
-                    <PasswordField onChange={handChange} name="password" title="Nhập mật khẩu..." />
-                    <PasswordField onChange={handChange} name="confirmPassword" title="Xác nhận lại mật khẩu..."/>
-                    <SubmitFormButton title="Đăng kí"/>
+                    <PasswordField onChange={handleChange} name="password" title="Nhập mật khẩu..." />
+                    <PasswordField onChange={handleChange} name="confirmPassword" title="Xác nhận lại mật khẩu..."/>
+                    <SubmitFormButton title="Đăng ký"/>
                 </form>
             </div>
         </>
