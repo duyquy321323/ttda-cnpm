@@ -34,12 +34,19 @@ const refresh_token = async (refreshToken) => {
   return response;
 }
 
+const forgetPassword = async (data) => {
+  const response = await api.post("/user/forget-password", data);
+
+  return response;
+}
+
 const userService = {
   login,
   register,
   sendOtp,
   logout,
-  refresh_token
+  refresh_token,
+  forgetPassword
 }
 
 export default userService

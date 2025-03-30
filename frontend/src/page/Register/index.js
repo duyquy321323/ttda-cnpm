@@ -6,6 +6,8 @@ import PasswordField from "../../component/PasswordField";
 import SendOTPField from "../../component/SendOTPField";
 import SubmitFormButton from "../../component/SubmitFormButton";
 import './Register.css';
+import userService from "../../services/userService";
+import { toast } from "react-toastify";
 
 const Register = () => {
     const [formRegister, setFormRegister] = useState({
@@ -16,14 +18,36 @@ const Register = () => {
         confirmPassword: '',
     });
 
+    const [length] = useState(6);
+
+    const [otp, setOtp] = useState("");
+    function onComplete(){ 
+    }
+    
+      const handleChangeOtp = (e) => {
+        let value = e.target.value.replace(/\D/g, ""); // Chỉ giữ số
+        if (value.length > length) return;
+    
+        setOtp(value);
+    
+        if (value.length === length) {
+          onComplete && onComplete(value);
+        }
+    
+        // Giữ vị trí con trỏ đúng
+        const cursorPos = e.target.selectionStart;
+        setTimeout(() => {
+          e.target.setSelectionRange(cursorPos, cursorPos);
+        }, 0);
+      };
+
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const res = await userService.register(formRegister);
-
+            const res = await userService.register({...formRegister, otp});
             toast.success(res.data.message)
             navigate("/login")
         } catch (error) {
@@ -32,7 +56,7 @@ const Register = () => {
 
     }
 
-    const handChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setFormRegister({
             ...formRegister,
@@ -41,8 +65,14 @@ const Register = () => {
     };
 
     const handleSendOTP = async () => {
-        // Xử lý gửi OTP
+        try {
+            const res = await userService.sendOtp({email: formRegister.email, isAccount: 0});
+            console.log(res.data);
+            toast.success(res.data.message)
+        } catch (error) {
+            console.log(error);
     };
+}
 
     return (
         <>
@@ -87,7 +117,7 @@ const Register = () => {
 
 
                     {/* Ô nhập mã OTP */}
-                    <OTPInput name="otp" onComplete={(otp) => { alert(`Mã OTP của bạn là: ${otp}`); }} />
+                    <OTPInput name="otp" length={length} handleChange={handleChangeOtp} otp={otp} />
 
                     {/* Ô nhập mật khẩu */}
                     <PasswordField onChange={handleChange} name="password" title="Nhập mật khẩu..." />

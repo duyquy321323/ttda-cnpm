@@ -5,9 +5,8 @@ import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import dayjs from "dayjs";
 import { useState } from "react";
 
-export default function TimeInput() {
-  const [time, setTime] = useState(dayjs("01:00", "HH:mm"));
-  const [isOn, setIsOn] = useState(true);
+export default function TimeInput({handleChange, isOn, setIsOn, value}) {
+  
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -24,8 +23,8 @@ export default function TimeInput() {
           }}
         >
           <TimePicker
-            value={time}
-            onChange={(newTime) => setTime(newTime)}
+            onChange={handleChange}
+            value={dayjs(value)}
             ampm={false} // Sử dụng 24h, bỏ AM/PM
             slotProps={{
               textField: {

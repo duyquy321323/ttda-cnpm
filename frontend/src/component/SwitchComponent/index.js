@@ -62,11 +62,15 @@ const IOSSwitch = styled((props) => (
   }));
   
 
-const SwitchComponent = () => {
+const SwitchComponent = ({handleChange, name, value}) => {
     return (
         <>
             <FormControlLabel
-                control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                name={name}
+                control={<IOSSwitch sx={{ m: 1 }}
+                checked={value} // ✅ Sử dụng checked thay vì value
+                    onChange={handleChange} 
+                     />}
             />
         </>
     );

@@ -36,8 +36,10 @@ const login = async (req, res, next) => {
     // Tạo payload
     const userInfo = {
       email: email,
-      id: user.id,
+      id: user.user_id,
       role: roles[0].name,
+      fullName: user.full_name,
+      phone: user.phone
     }
 
     // Tạo accessToken và refreshToken để trả về phía Fe
@@ -81,7 +83,7 @@ const login = async (req, res, next) => {
 
 const register = async (req, res, next) => {
   try {
-    const { password, confirmPassword, email, otp } = req.body;
+    const { password, confirmPassword, email, otp, fullName, phone } = req.body;
 
     if (password !== confirmPassword) {
       throw new ApiError(StatusCodes.UNPROCESSABLE_ENTITY).json({ message: "Mật khẩu không khớp!" })
@@ -101,7 +103,7 @@ const register = async (req, res, next) => {
       throw new ApiError(StatusCodes.NOT_FOUND, "Mã otp không hợp lệ!");
     }
 
-    db.query("INSERT INTO users(username, password, role_id) VALUES (?, ?, ?);", [email, password, 1], 
+    db.query("INSERT INTO users(username, password, role_id, phone, full_name) VALUES (?, ?, ?, ?, ?);", [email, password, 1, phone, fullName], 
       (err, results) => {
       if (err) {
         throw new ApiError(StatusCodes.INTERNAL_SERVER_ERROR, "Đăng ký thất bại!");
@@ -109,7 +111,7 @@ const register = async (req, res, next) => {
     });
 
     // Lưu vào database
-    res.status(StatusCodes.OK).json({ message: "Ok" })
+    res.status(StatusCodes.OK).json({ message: "Đăng ký tài khoản thành công!" })
   } catch (error) {
     next(error)
   }
@@ -166,7 +168,7 @@ const sendtOtp = async (req, res, next) => {
     `
 
     sendEmail(email, subject, html)
-    res.status(StatusCodes.OK).json({ message: "Ok" })
+    res.status(StatusCodes.OK).json({ message: "Gửi otp thành công" })
   } catch (error) {
     next(error)
   }

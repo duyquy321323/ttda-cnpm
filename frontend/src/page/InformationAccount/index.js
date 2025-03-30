@@ -7,18 +7,21 @@ import phoneIcon from "../../assets/img/Phone.png";
 import passIcon from "../../assets/img/pass.png";
 import LogOutIcon from "../../assets/img/LogOut.png";
 import "./InformationAccount.css";
+import { useDispatch } from "react-redux";
+import { logout } from "../../redux/action";
 
 const InformationAccount = () => {
-    const userInfo = JSON.parse(localStorage.getItem("userInfo")) || {}; 
-    const userName = userInfo.name || "Người dùng";
+    const userInfo = JSON.parse(localStorage.getItem("user")) || {}; 
+    const userName = userInfo.fullName || "Người dùng";
     const userEmail = userInfo.email || "Chưa cập nhật";
     const userPhone = userInfo.phone || "Chưa cập nhật";
+    const dispatch = useDispatch();
     
 
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        localStorage.removeItem("userToken");
+        dispatch(logout());
         sessionStorage.clear();
         navigate("/login");
     };

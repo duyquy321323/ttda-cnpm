@@ -22,6 +22,7 @@ export const accountAction = (state = null, action) => {
             localStorage.setItem('user', accountString);
             return action.user;
         case LOGOUT:
+            localStorage.removeItem('user');
             return null;
         default:
             return state;
