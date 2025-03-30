@@ -9,6 +9,12 @@ import LogOutIcon from "../../assets/img/LogOut.png";
 import "./InformationAccount.css";
 
 const InformationAccount = () => {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo")) || {}; 
+    const userName = userInfo.name || "Người dùng";
+    const userEmail = userInfo.email || "Chưa cập nhật";
+    const userPhone = userInfo.phone || "Chưa cập nhật";
+    
+
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -32,7 +38,7 @@ const InformationAccount = () => {
                     TÀI KHOẢN
                 </h1>
                 <p className = "introText">
-                    <span style={{ color: "var(--orangecolor)" }}>Lumi</span><span style={{ color: "var(--violetcolor)" }}>Home</span>xin chào Trương Nguyễn Minh Nhiên!!!
+                    <span style={{ color: "var(--orangecolor)" }}>Lumi</span><span style={{ color: "var(--violetcolor)" }}>Home</span> xin chào {userName}!!!
                 </p>
             </div>
 
@@ -43,7 +49,7 @@ const InformationAccount = () => {
                     <div className="icon-circle">
                         <img src={userIcon} alt="User Icon" className="icon-img" />
                     </div>
-                    <p><span style={{ color: "var(--violetcolor)" }}>Họ tên:</span> Trương Nguyễn Minh Nhiên</p>
+                    <p><span style={{ color: "var(--violetcolor)" }}>Họ tên:</span> {userName}</p>
                 </div>
 
                 {/* Email & Số điện thoại */}
@@ -52,14 +58,14 @@ const InformationAccount = () => {
                         <div className="icon-circle">
                             <img src={mailIcon} alt="Email Icon" className="icon-img" />
                         </div>
-                        <p><span style={{ color: "var(--violetcolor)" }}>Email:</span> nhien.truongcs111204@hcmut.edu.vn</p>
+                        <p><span style={{ color: "var(--violetcolor)" }}>Email:</span> {userEmail}</p>
                     </div>
 
                     <div className="info-item">
                         <div className="icon-circle">
                             <img src={phoneIcon} alt="Phone Icon" className="icon-img" />
                         </div>
-                        <p><span style={{ color: "var(--violetcolor)" }}>Số điện thoại:</span> 0941234567</p>
+                        <p><span style={{ color: "var(--violetcolor)" }}>Số điện thoại:</span> {userPhone}</p>
                     </div>
                 </div>
 
