@@ -1,0 +1,26 @@
+.input-container {
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 15px 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 25px;
+    font-family: var(--fontvietnam);
+    border: 3px solid #00AEEF;
+    height: 100px;
+}
+
+.input-container input {
+    border: none;
+    outline: none;
+    font-size: 30px;
+    width: 100%;
+    font-family: var(--fontvietnam);
+    background: transparent;
+    color: #121212;
+}
+
+.input-container input::placeholder {
+    color: #121212;
+    opacity: 1;
+}

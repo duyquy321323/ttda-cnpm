@@ -1,0 +1,44 @@
+.container--header{
+    color: #121212;
+    font-family: var(--fontvietnam);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 45px 50px;
+}
+
+.container--header .container--header__left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 33px;
+}
+
+.container--header .container--header__right{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 33px;
+}
+
+.container--header .content{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+
+.container--header .content:hover{
+    cursor: pointer;
+<<<<<<< HEAD
+=======
+}
+
+.container--header p {
+    font-size: 20px;
+>>>>>>> minie
+}

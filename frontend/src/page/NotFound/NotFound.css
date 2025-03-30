@@ -1,0 +1,14 @@
+.container--notfound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/0.5;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 600px;
+    border-radius: 20px;
+    font-family: var(--fontvietnam);
+    font-size: 40px;
+    color: var(--violetcolor);
+    margin: auto;
+}
