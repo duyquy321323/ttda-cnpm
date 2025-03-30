@@ -146,5 +146,13 @@
 .info-row {
     display: flex;
     justify-content: space-between;
-    gap: 30px; /* Khoảng cách giữa 2 info-item */
+    gap: 30px;
+}
+
+.divider {
+    border: none;
+    height: 1px;
+    background-color: var(--violetcolor);
+    margin: 10px 0px;
+    margin-bottom: 50px;
 }

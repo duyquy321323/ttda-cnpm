@@ -7,9 +7,8 @@ import TextFieldForm from '../../component/TextFieldForm';
 import './Login.css';
 
 const Login = () => {
-
     const [formLogin, setFormLogin] = useState({
-        phoneNumber: '',
+        email: '',
         password: '',
     });
 
@@ -19,7 +18,7 @@ const Login = () => {
         e.preventDefault();
     }
 
-    const handChange = (e) => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setFormLogin({
             ...formLogin,
@@ -28,31 +27,25 @@ const Login = () => {
     }
 
     return (
-        <>
-            <div className="container--form">
-                <div className="back-btn">
-                    <BackButton title="Trang chủ" navlink="/"/>
-                </div>
-                <h1 className="container--form__title">
-                    Đăng nhập
-                </h1>
-                <h2 className="container--form__content">
-                        <span>Lumi</span>
-                        <span>Home </span> 
-                        xin chào!!!
-                </h2>
-                <form className="form" onSubmit={handleSubmit}>
-                    <TextFieldForm title="Nhập số điện thoại..." name="phoneNumber" onChange={handChange} type="number"/>
-                    <PasswordField onChange={handChange} name="password" title="Nhập mật khẩu..." />
-                    <div className="navigation">
-                        <p onClick={() => navigate("/forget-password")}>Quên mật khẩu?</p>
-                        <p onClick={() => navigate("/register")}>Chưa có tài khoản?</p>
-                    </div>
-                    <SubmitFormButton title="Đăng nhập"/>
-                </form>
+        <div className="container--form">
+            <div className="back-btn">
+                <BackButton title="Trang chủ" navlink="/"/>
             </div>
-        </>
-    )
+            <h1 className="container--form__title">Đăng nhập</h1>
+            <h2 className="container--form__content">
+                <span>Lumi</span>
+                <span>Home </span> xin chào!!!
+            </h2>
+            <form className="form" onSubmit={handleSubmit}>
+                <TextFieldForm title="Nhập email..." name="email" onChange={handleChange} type="email"/>
+                <PasswordField onChange={handleChange} name="password" title="Nhập mật khẩu..." />
+                <div className="navigation">
+                    <p onClick={() => navigate("/forget-password")}>Quên mật khẩu?</p>
+                    <p onClick={() => navigate("/register")}>Chưa có tài khoản?</p>
+                </div>
+                <SubmitFormButton title="Đăng nhập"/>
+            </form>
+        </div>
+    );
 }
-
 export default Login;

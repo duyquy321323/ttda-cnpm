@@ -1,14 +1,26 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import avatarIcon from "../../assets/img/avatar.png";
 import userIcon from "../../assets/img/AvatarPlaceholder.png";
 import mailIcon from "../../assets/img/mail.png";
-import XIcon from "../../assets/img/X.png";
 import phoneIcon from "../../assets/img/Phone.png";
 import passIcon from "../../assets/img/pass.png";
 import LogOutIcon from "../../assets/img/LogOut.png";
 import "./InformationAccount.css";
 
 const InformationAccount = () => {
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("userToken");
+        sessionStorage.clear();
+        navigate("/login");
+    };
+
+    const handleChangePassword = () => {
+        navigate("/forget-password"); 
+    };
+
     return (
         <div className="container--infoacc">
             {/* Intro */}
@@ -52,23 +64,17 @@ const InformationAccount = () => {
                 </div>
 
                 {/* Đổi mật khẩu */}
-                <div className="info-item">
+                <div className="info-item" onClick={handleChangePassword} style={{ cursor: "pointer" }}>
                     <div className="icon-circle">
                         <img src={passIcon} alt="Pass Icon" className="icon-img" />
                     </div>
                     <p><span style={{ color: "var(--violetcolor)" }}>Đổi mật khẩu</span></p>
                 </div>
 
-                {/* Xóa tài khoản */}
-                <div className="info-item">
-                    <div className="icon-circle">
-                        <img src={XIcon} alt="X Icon" className="icon-img" />
-                    </div>
-                    <p><span style={{ color: "var(--violetcolor)" }}>Xóa tài khoản</span></p>
-                </div>
+                <hr className="divider" />
 
                 {/* Đăng xuất */}
-                <div className="info-item">
+                <div className="info-item" onClick={handleLogout} style={{ cursor: "pointer" }}>
                     <div className="icon-circle">
                         <img src={LogOutIcon} alt="LogOut Icon" className="icon-img" />
                     </div>

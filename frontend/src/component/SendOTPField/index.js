@@ -20,7 +20,7 @@ const SendOTPField = (props) => {
         {title}
       </InputLabel>
       <OutlinedInput
-        type="number"
+        type="email"
         endAdornment={
           <InputAdornment position="end">
             <Button 
