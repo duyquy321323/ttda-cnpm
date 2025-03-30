@@ -58,7 +58,7 @@
 }
 
 .infoacc-content {
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     text-align: left;
     padding-top: 50px;
@@ -80,8 +80,8 @@
 }
 
 .icon-circle {
-    width: 50px;
-    height: 50px;
+    width: 70px;
+    height: 70px;
     background: var(--highlight-orange);
     border-radius: 50%;
     display: flex;
