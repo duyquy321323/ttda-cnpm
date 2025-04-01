@@ -22,6 +22,8 @@ TOPICS = {
 # Kết nối MQTT
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code ", rc)
+def on_disconnect(client, userdata, rc):
+    print("Disconnected with result code ", rc)
 
 def publish_fake_data(client):
     while True:
@@ -56,6 +58,7 @@ def publish_fake_data(client):
 client = mqtt.Client()
 client.username_pw_set(AIO_USERNAME, AIO_KEY)
 client.on_connect = on_connect
+client.on_disconnect = on_disconnect
 client.connect(BROKER, 1883, 60)
 
 client.loop_start()

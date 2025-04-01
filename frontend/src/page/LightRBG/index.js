@@ -17,7 +17,7 @@ const LightRBG = () => {
     const [formRq, setFormRq] = useState({
         auto: false,
         timer_off: "",
-        color: "",
+        color: "black",
     });
 
     const handleChange = (e) => {
@@ -35,14 +35,14 @@ const LightRBG = () => {
             });
         }
     }
-    const [time, setTime] = useState(dayjs().set("hour", 1).set("minute", 0));
+    const [time, setTime] = useState("");
 
 
     useEffect(() => {
         async function fetchData() {
             try{
                 console.log(isOn? {...formRq, timer_off: dayjs(time).format("HH:mm")} : formRq)
-                const response = await api.post("light-rbg/", isOn? {...formRq, timer_off: dayjs(time).format("HH:mm")} : formRq);
+                const response = await api.post("light-rbg/", isOn? {...formRq, timer_off:time? dayjs(time).format("HH:mm") : ""} : formRq);
                 setFormRq(response.data.ledState);
             } catch (e){
                 console.error(e);

@@ -59,4 +59,22 @@ client.on("message", async (topic, message) => {
 
 const getLatestEnvironmentData = () => latestData;
 
-module.exports = { getLatestEnvironmentData };
+// lấy nhiệt độ cách đây 24h
+const getTemperature24h = async () => {
+    const data = await EnvironmentData.getTemperature24h();
+    return data;
+};
+
+// Lấy humidity cách đây 24h
+const getHumidity24h = async () => {
+    const data = await EnvironmentData.getHumidity24h();
+    return data;
+};
+
+// Lấy ánh sáng cách đây 24h
+const getLight24h = async () => {
+    const data = await EnvironmentData.getLight24h();
+    return data;
+};
+
+module.exports = { getLatestEnvironmentData, getTemperature24h, getHumidity24h, getLight24h };
