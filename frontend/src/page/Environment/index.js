@@ -25,15 +25,27 @@ const Environment = () => {
     const [lightData, setLightData] = useState([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await fetch("http://localhost:8080/environment");
-                const data = await response.json();
-                setEnvironmentData(data);
-            } catch (error) {
-                console.error("Error fetching environment data:", error);
-            }
+        const ws = new WebSocket("ws://localhost:8080"); // thay bằng đúng địa chỉ server
+      
+        ws.onopen = () => {
+          console.log("🟢 WebSocket connected");
         };
+      
+        ws.onmessage = (event) => {
+          const data = JSON.parse(event.data);
+          setEnvironmentData(data); // Lưu vào state để render
+        };
+      
+        ws.onclose = () => {
+          console.log("🔴 WebSocket disconnected");
+        };
+      
+        return () => {
+          ws.close();
+        };
+      }, []);
+
+    useEffect(() => {
 
         async function getTemperature24h() {
             try {
@@ -74,10 +86,6 @@ const Environment = () => {
         getLight24h();
         getHumidity24h();
         getTemperature24h();
-        fetchData();
-        const interval = setInterval(fetchData, 30000);
-
-        return () => clearInterval(interval);
     }, []);
 
     return (

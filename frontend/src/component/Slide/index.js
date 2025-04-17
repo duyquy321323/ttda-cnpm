@@ -3,8 +3,6 @@ import { Slider } from "@mui/material";
 const Slide = (props) => {
   const { min, max, color, title, value } = props;
 
-  console.log(value);
-
   // Hàm tính màu dựa trên giá trị slider (từ -40 đến 80)
   const getThumbColor = (val) => {
     const percent = (val + 40) / 120; // Chuyển đổi thành phần trăm trong khoảng [0,1]

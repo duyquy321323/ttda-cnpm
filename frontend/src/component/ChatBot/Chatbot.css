@@ -1,0 +1,133 @@
+/* Khung chat cố định góc phải */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    z-index: 1;
+  }
+  
+  /* Nút mở chat */
+  .chat-icon {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Khung chat */
+  .chatbox {
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* Header */
+  .chat-header {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+  
+  /* Nút đóng chat */
+  .chat-header button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  /* Danh sách tin nhắn */
+  .chat-messages {
+    height: 250px;
+    overflow-y: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Tin nhắn */
+  .message {
+    max-width: 80%;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 10px;
+    word-wrap: break-word;
+  }
+  
+  /* Tin nhắn của người dùng */
+  .message.user {
+    background-color: #5dabff;
+    align-self: flex-end;
+  }
+  
+  /* Tin nhắn của bot */
+  .message.bot {
+    background-color: #9c9c9c;
+    align-self: flex-start;
+  }
+  
+  /* Khu nhập tin nhắn */
+  .chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    color: #333;
+  }
+  
+  .chat-input input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+  }
+  
+  .chat-input button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .chat-warning {
+    position: absolute;
+    top: 10px;
+    right: 40px;
+    min-width: 200px;
+    max-width: 300px;
+    background-color: #fff3cd;
+    padding: 5px 10px;
+    border-radius: 6px;
+    border: 1px solid #ffeeba;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    white-space: wrap;
+    z-index: -1;
+    animation: rightToLeft 1s;
+    overflow: hidden;
+  }
+
+  @keyframes rightToLeft {
+    from{
+      opacity: 0;
+    }
+    to{ 
+      opacity: 1;
+    }
+  }
+  

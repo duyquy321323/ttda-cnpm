@@ -23,7 +23,7 @@ const log = async (req, res, next) => {
     // làm tương tự với bảng door, relay, fan
 
     rowsRBG.forEach((row) => {
-      row.device = "LED_RGB";
+      row.device = "Đèn RGB";
       row.status = COLOR_MAP[row.color];
       row.result = "Thành công";
       row.resultColor = row.result === "Thành công" ? "#34C759" : "#FF2D55";
@@ -34,7 +34,7 @@ const log = async (req, res, next) => {
     });
 
     rowsRELAY.forEach((row) => {
-        row.device = "RELAY";
+        row.device = "Relay";
         row.status = row.state === 1 ? "Bật" : "Tắt";
         row.result = "Thành công";
         row.time = row.changed_at;
@@ -45,7 +45,7 @@ const log = async (req, res, next) => {
     });
 
     rowsDOOR.forEach((row) => {
-        row.device = "SERVO_DOOR";
+        row.device = "Cửa";
         row.status = row.state === 1 ? "Mở" : "Đóng";
         row.statusColor = row.state === 1 ? "#34C759" : "#FF2D55";
         delete row.state;
@@ -56,7 +56,7 @@ const log = async (req, res, next) => {
     });
 
     rowsFAN.forEach((row) => {
-        row.device = "FAN";
+        row.device = "Quạt";
         row.status = row.speed;
       row.result = "Thành công";
       row.statusColor = row.status > 0 ? "#34C759" : "#FF2D55";
@@ -67,7 +67,7 @@ const log = async (req, res, next) => {
     });
 
     const logs = [...rowsRBG, ...rowsRELAY, ...rowsDOOR, ...rowsFAN];
-    logs.sort((a, b) => new Date(a.time) - new Date(b.time));
+    logs.sort((a, b) => - new Date(a.time) + new Date(b.time));
     res.status(StatusCodes.OK).json({ logs });
 
   } catch (error) {
