@@ -23,7 +23,7 @@ const publishData = (feed, value) => {
     });
 };
 
-updateControlState = async (relay, fan, door) => {
+const updateControlState = async (relay, fan, door) => {
     try {
         publishData(FEEDS.relay, relay ? "1" : "0");
         publishData(FEEDS.fan, fan.toString());
@@ -39,4 +39,34 @@ updateControlState = async (relay, fan, door) => {
     }
 };
 
-module.exports = { updateControlState };
+const updateDoorState = async (state) => {
+    try {
+        publishData(FEEDS.servo, state ? "1" : "0");
+        await controlModel.addDoorState({ state });
+        return { state };
+    } catch (error) {
+        throw new Error(`Error: ${error}`);
+    }
+};
+
+const updateFanState = async (speed) => {
+    try {
+        publishData(FEEDS.fan, speed.toString());
+        await controlModel.addFanState({ speed });
+        return { speed };
+    } catch (error) {
+        throw new Error(`Error: ${error}`);
+    }
+};
+
+const updateRelayState = async (state) => {
+    try {
+        publishData(FEEDS.relay, state ? "1" : "0");
+        await controlModel.addRelayState({ state });
+        return { state };
+    } catch (error) {
+        throw new Error(`Error: ${error}`);
+    }
+};
+
+module.exports = { updateControlState, updateDoorState, updateFanState, updateRelayState };

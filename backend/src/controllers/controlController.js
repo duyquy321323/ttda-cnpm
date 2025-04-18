@@ -15,4 +15,40 @@ const setControlState = async (req, res) => {
     }
 };
 
-module.exports = { setControlState };
+const setFanState = async (req, res) => {
+    try {
+        const { speed } = req.body;
+        const updatedState = await controlService.updateFanState(speed);
+
+        res.json({ message: "Updated successfully", fanState: updatedState });
+    } catch (error) {
+        console.error("Error:", error.message);
+        res.status(500).json({ error: "Internal server error" });
+    }
+};
+
+const setDoorState = async (req, res) => {
+    try {
+        const { state } = req.body;
+        const updatedState = await controlService.updateDoorState(state);
+
+        res.json({ message: "Updated successfully", doorState: updatedState });
+    } catch (error) {
+        console.error("Error:", error.message);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
+const setRelayState = async (req, res) => {
+    try {
+        const { state } = req.body;
+        const updatedState = await controlService.updateRelayState(state);
+
+        res.json({ message: "Updated successfully", relayState: updatedState });
+    } catch (error) {
+        console.error("Error:", error.message);
+        res.status(500).json({ error: "Internal server error" });
+    }
+}
+
+module.exports = { setControlState, setDoorState, setFanState, setRelayState };

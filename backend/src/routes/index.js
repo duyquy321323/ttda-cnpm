@@ -3,6 +3,7 @@ const controlRoutes = require("./controlRoute");
 const ledRoutes = require("./ledRoute");
 const userRoutes = require("./userRoute");
 const logRoutes = require("./logRoute");
+const deviceRoutes = require("./deviceRoute");
 
 const route = (app) => {
   app.use("/environment", environmentRoutes);
@@ -14,6 +15,8 @@ const route = (app) => {
   app.use("/user", userRoutes);
 
   app.use("/log", logRoutes);
+
+  app.use("/devices", deviceRoutes);
 
 }
 

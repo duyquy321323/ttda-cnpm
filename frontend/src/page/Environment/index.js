@@ -99,7 +99,7 @@ const Environment = () => {
                     </div>
                     <div className="right">
                     <div className="top">
-                    <p>Nhiệt độ: {environmentData.temperature}°C</p>
+                    <p>Nhiệt độ: {Number(environmentData.temperature)?.toFixed(2)}°C</p>
                     <div className="slide">
                         <img src={BlueTempImg} alt="BlueTemp" />
                         <Slide min={-40} max={80} value={environmentData.temperature}
@@ -128,7 +128,7 @@ const Environment = () => {
                 <div className="align-right">
                     <div className="left">
                         <div className="top">
-                            <p>Độ ẩm: {environmentData.humidity}%</p>
+                            <p>Độ ẩm: {Number(environmentData.humidity)?.toFixed(2)}%</p>
                             <div className="slide">
                                 <Slide min={0} max={100} value={environmentData.humidity}
                                     color="linear-gradient(90deg, #FF4015 0%, #34C759 30%, #00AEEF 60%, #9747FF 80%)"
@@ -170,7 +170,7 @@ const Environment = () => {
                     </div>
                     <div className="right">
                         <div className="top">
-                            <p>Ánh sáng: {environmentData.light}%</p>
+                            <p>Ánh sáng: {Number(environmentData.light)?.toFixed(2)}%</p>
                             <div className="slide">
                                 <Slide min={0} max={100} value={environmentData.light}
                                     color="linear-gradient(90deg, #121212 0%, #FF3B30 10%, #34C759 30%, #00AEEF 70%, #FFC107 90%)"
