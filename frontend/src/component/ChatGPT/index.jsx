@@ -70,7 +70,11 @@ import api from "../../api";
 
   async function run(textInput, environmentData){
 
-    const deviceData = await getDeviceData();
+    const MAX_HISTORY = 10;
+  chatHistory = chatHistory.slice(-MAX_HISTORY);
+
+
+  const deviceData = await getDeviceData();
   let environmentDataString = `Nhiệt độ: ${environmentData.temperature}°C, Độ ẩm: ${environmentData.humidity }%, Độ sáng: ${environmentData.light}%`;
   console.log("environmentDataString", environmentDataString);
   // Lấy câu hỏi gần nhất của user
@@ -99,32 +103,22 @@ import api from "../../api";
     const chatSession = model.startChat({
       generationConfig,
       history: [
-        { role: "user", parts: [{ text: "Dưới đây là dữ liệu môi trường hiện tại của tòa nhà:\n" + environmentDataString }] },
-        { role: "user", parts: [{ text: "Còn đây là dữ liệu của các thiết bị hiện tại của tòa nhà:\n" + deviceData.dataString }] },
-        { role: "user", parts: [{ text: "Nếu Nhiệt độ < 10 độ C thì nhắn là: 'temperatureLow'"}] },
-        { role: "user", parts: [{ text: "Nếu Nhiệt độ > 35 độ C thì nhắn là: 'temperatureHight'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ ẩm < 30% thì nhắn là: 'humidityLow'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ ẩm >= 60% và < 80% thì nhắn là: 'humidityHight1'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ ẩm > 80% thì nhắn là: 'humidityHight2'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ sáng < 10% thì nhắn là: 'lightLow1'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ sáng >= 10% và < 30% thì nhắn là: 'lightLow2'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ sáng >= 70% và < 90% thì nhắn là: 'lightHight1'"}] },
-        { role: "user", parts: [{ text: "Nếu Độ sáng >= 90% thì nhắn là: 'lightHight2'"}] },
-        { role: "user", parts: [{ text: "Bạn đang trả lời khách hàng nên hãy nói chuyện lịch sự." }] },
-        { role: "user", parts: [{ text: "Bây giờ, hãy trả lời các câu hỏi dựa trên dữ liệu môi trường hiện tại. Nếu câu hỏi của khách là rỗng: { Nhớ những cái điều kiện thì nhắn đúng ký tự đó thôi ví dụ: temperatureLow. Bạn chỉ được trả về đúng từ khóa tôi đã đưa: temperatureLow, temperatureHight,... Không được nói gì khác.}" }] },
-        { role: "user", parts: [{ text: "Còn nếu có dữ liệu môi trường hoặc khách không đề cập đến dữ liệu môi trường thì trả lời bình thường  " }] },
-        { role: "user", parts: [{ text: "Nếu HỎI hoặc NHẮN thì phải TRẢ LỜI(Không chứa các token trên) còn không thì chỉ in ra token như đã đề cập trên" }] },
-        { role: "user", parts: [{ text: "Nếu khách có tin nhắn mà không phải rỗng thì KHÔNG ĐƯƠC TRẢ RA token" }] },
-        { role: "user", parts: [{ text: "Bạn là 1 trợ lý yolohome." }] },
-        { role: "user", parts: [{ text: "Nếu khách muốn bật relay thì hãy nhắn là 'relay { state: 1 }' còn muốn tắt thì đổi lại state là 0"}] },
-        { role: "user", parts: [{ text: "Nếu khách muốn đóng cửa thì hãy nhắn là 'door { state: 0 }' còn muốn mở thì đổi lại state là 1"}] },
-        { role: "user", parts: [{ text: "Nếu khách muốn bật quạt thì hãy nhắn là 'fan { speed: 100 }' còn muốn tắt thì đổi lại speed là 0, hoặc muốn bật quạt bao nhiều phần trăm thì thay vào."}] },
-        { role: "user", parts: [{ text: "Nếu khách muốn bật đèn thì hãy nhắn là 'light { auto: 1, color: 'white', timer_off: '00:00' }' còn muốn tắt thì đổi lại auto là 0 và color là black. LƯU Ý chỉ có 8 màu là red, blue, green, purple, orange, black, white, yellow. Nếu khách chọn màu khác thì đưa ra gợi ý cho khách các màu hiện có"}] },
-        { role: "user", parts: [{ text: "nếu thiếu MÀU, CHẾ ĐỘ AUTO, GIỜ TẮT từ thông tìn khách hàng thì thêm trường đó lấy từ dữ liệu hiện có, NHỚ ĐÚNG CÚ PHÁP!!!"}] },
-        { role: "user", parts: [{ text: "LÚC KHÁCH MUỐN ĐIỀU CHỈNH CÁC THIẾT BỊ NHƯ ĐÈN RBG, QUẠT, CỬA, RELAY thì phải ĐÚNG CÚ PHÁP ĐÃ NÓI TRƯỚC ĐÓ!!!"}] },
-        { role: "user", parts: [{ text: "Khi đưa ra ví dụ thì không được nhắn luôn cú pháp, khi nào nhận được yêu cầu điều chỉnh thì mới nhắn cú pháp"}] },
-        { role: "user", parts: [{ text: "bạn chỉ có thể đưa ra các gợi ý chỉnh thiết bị hiện có thôi"}] },
-        { role: "user", parts: [{ text: "--- từ dòng này trở đi là TIN NHẮN CỦA KHÁCH (nhớ nếu không phải rổng thì không được trả token) ---" }] },
+        { role: "user", parts: [{ text: "Dưới đây là dữ liệu môi trường hiện tại của tòa nhà:\n" + environmentDataString 
+          + "Còn đây là dữ liệu của các thiết bị hiện tại của tòa nhà:\n" + deviceData.dataString
+          + "Bạn đang trả lời khách hàng nên hãy nói chuyện lịch sự."
+          + "Bây giờ, hãy trả lời các câu hỏi dựa trên dữ liệu môi trường hiện tại."
+          + "Còn nếu có dữ liệu môi trường hoặc khách không đề cập đến dữ liệu môi trường thì trả lời bình thường "
+          + "Bạn là 1 trợ lý yolohome."
+          + "Nếu khách muốn bật relay thì hãy nhắn là 'relay { state: 1 }' còn muốn tắt thì đổi lại state là 0"
+          + "Nếu khách muốn đóng cửa thì hãy nhắn là 'door { state: 0 }' còn muốn mở thì đổi lại state là 1"
+          + "Nếu khách muốn bật quạt thì hãy nhắn là 'fan { speed: 100 }' còn muốn tắt thì đổi lại speed là 0, hoặc muốn bật quạt bao nhiều phần trăm thì thay vào."
+          + "Nếu khách muốn bật đèn thì hãy nhắn là 'light { auto: 1, color: 'white', timer_off: '00:00' }' còn muốn tắt thì đổi lại auto là 0 và color là black. LƯU Ý chỉ có 8 màu là red, blue, green, purple, orange, black, white, yellow. Nếu khách chọn màu khác thì đưa ra gợi ý cho khách các màu hiện có"
+          + "nếu thiếu MÀU, CHẾ ĐỘ AUTO, GIỜ TẮT từ thông tìn khách hàng thì thêm trường đó lấy từ dữ liệu hiện có, NHỚ ĐÚNG CÚ PHÁP!!!"
+          + "LÚC KHÁCH MUỐN ĐIỀU CHỈNH CÁC THIẾT BỊ NHƯ ĐÈN RBG, QUẠT, CỬA, RELAY thì phải ĐÚNG CÚ PHÁP ĐÃ NÓI TRƯỚC ĐÓ!!!"
+          + "Khi đưa ra ví dụ thì không được nhắn luôn cú pháp, khi nào nhận được yêu cầu điều chỉnh thì mới nhắn cú pháp"
+          + "bạn chỉ có thể đưa ra các gợi ý chỉnh thiết bị hiện có thôi"
+          + "--- từ dòng này trở đi là TIN NHẮN CỦA KHÁCH ---"
+        }] },
         ...formattedHistory // Sử dụng lịch sử hội thoại đã định dạng
       ],
     });
@@ -133,45 +127,35 @@ import api from "../../api";
     const result = await chatSession.sendMessage(textInput);
     let botResponse = result.response.text();
 
-    if (textInput.trim().length > 0) {
-      // Nếu bot vẫn phản hồi token → chặn lại
-      const tokens = ["temperatureLow", "temperatureHight", "humidityLow", "humidityHight1", "humidityHight2", "lightLow1", "lightLow2", "lightHight1", "lightHight2"];
-      const containsToken = tokens.some(token => botResponse.includes(token));
-    
-      if (containsToken) {
-        botResponse = "Xin lỗi, tôi không thể cung cấp thông tin này.";
-      }
-    }
-
     console.log("botResponse", botResponse);
 
     let botWarning = null;
-if(textInput.trim().length === 0) {
-    if(botResponse.includes("temperatureLow")) {
+    if(textInput.trim().length === 0) {
+    if(environmentData.temperature < 10) {
       botWarning = "Nhiệt độ quá thấp, có nguy cơ cảm lạnh, cần ấm áp hơn.";
     }
-    else if(botResponse.includes("temperatureHight")) {
+    else if(environmentData.temperature > 35) {
       botWarning = `Nhiệt độ quá cao, có nguy cơ bị say nắng, sốt nóng. Cần bật quạt với tốc độ ${Number((environmentData.temperature - 35) * 100 / 10)?.toFixed(2)} trở lên.`;
     } 
-    else if(botResponse.includes("humidityLow")) {
+    else if(environmentData.humidity < 30) {
       botWarning = "Không khí quá khô! Có thể gây khô da, khó chịu khi hô hấp, tăng nguy cơ cháy nổ.";
     }
-    else if(botResponse.includes("humidityHight1")) {
+    else if(environmentData.humidity >= 60 && environmentData.humidity < 80) {
       botWarning = "Độ ẩm cao! Cẩn thận nấm mốc và vi khuẩn phát triển. Hãy kiểm tra thông gió, hút ẩm nếu cần.";
     }
-    else if(botResponse.includes("humidityHight2")) {
+    else if(environmentData.humidity > 80) {
       botWarning = "Nguy hiểm! Không khí quá ẩm, dễ gây ẩm mốc, hư hỏng thiết bị điện tử.";
     }
-    else if(botResponse.includes("lightLow1")) {
+    else if(environmentData.light < 10) {
       botWarning = "Ánh sáng quá yếu, cần bật đèn.";
     }
-    else if(botResponse.includes("lightLow2")) {
+    else if(environmentData.light >= 10 && environmentData.light < 30) {
       botWarning = "Độ sáng thấp, dễ gây mệt mỏi khi đọc sách hoặc làm việc trong thời gian dài.";
     }
-    else if(botResponse.includes("lightHight1")) {
+    else if(environmentData.light >=70 && environmentData.light < 90) {
       botWarning = "Độ sáng vượt mức bình thường, có thể gây chói mắt nếu duy trì trong thời gian dài.Đề xuất tắt đèn để tiết kiệm điện.";
     }
-    else if(botResponse.includes("lightHight2")) {
+    else if(environmentData.light > 90) {
       botWarning = "Độ sáng hiện tại quá cao, có thể gây khó chịu và ảnh hưởng đến thị lực. Đề xuất tắt đèn để tiết kiệm điện."
     }
     else if (deviceData.data.relay_state) {
