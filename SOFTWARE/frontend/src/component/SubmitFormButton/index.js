@@ -19,10 +19,10 @@ const ButtonStyled = styled(Button)({
 
 const SubmitFormButton = (props) => {
 
-    const { title } = props;
+    const { title, type } = props;
 
-    return(
-        <ButtonStyled variant="contained">{title}</ButtonStyled>
+    return (
+        <ButtonStyled variant="contained" type={type}>{title}</ButtonStyled>
     );
 }
 

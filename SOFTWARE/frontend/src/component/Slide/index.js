@@ -1,10 +1,7 @@
 import { Slider } from "@mui/material";
-import { useState } from "react";
 
 const Slide = (props) => {
-  const { min, max, color, title } = props;
-
-  const [value, setValue] = useState(min);
+  const { min, max, color, title, value } = props;
 
   // Hàm tính màu dựa trên giá trị slider (từ -40 đến 80)
   const getThumbColor = (val) => {
@@ -91,8 +88,8 @@ const Slide = (props) => {
     <>
       <Slider
         size="small"
-        onChange={(e, newValue) => setValue(newValue)}
-        defaultValue={min}
+        value={value}
+        disabled
         aria-label="Small"
         min={min} // Giá trị nhỏ nhất
         max={max} // Giá trị lớn nhất

@@ -1,25 +1,52 @@
-require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require('cookie-parser');
 const http = require("http");
+require("dotenv").config();
 
 const { setupWebSocket } = require("./controllers/environmentController");
-
-
-const environmentRoutes = require("./routes/environmentRoute");
-const controlRoutes = require("./routes/controlRoute"); 
-const ledRoutes = require("./routes/ledRoute"); 
 
 const app = express();
 const PORT = process.env.PORT;
 
-app.use(cors());
-app.use(express.json());
+const route = require("./routes/index.js");
+const errorHandlingMiddleware = require("./middleware/errorHandlingMiddleware.js");
+const corsOption = require("./config/cors.js");
 
 
-app.use("/environment", environmentRoutes);
-app.use("/fan-relay-servo", controlRoutes);
-app.use("/light-rbg", ledRoutes);
+const START_SERVER = () => {
+
+    // Cors
+    app.use(cors(corsOption));
+
+    // Fix Cache from disk from ExpressJS
+    app.use((req, res, next) => {
+        res.set('Cache-Control', 'no-store')
+        next()
+    });
+
+    // Use Cookie
+    app.use(cookieParser())
+
+    // Enable req.body json data
+    app.use(express.json())
+
+    // Route
+    route(app);
+
+    // ErrorHandling Middleware
+    app.use(errorHandlingMiddleware)
+
+}
+
+(async () => {
+    try {
+        // Start Back-end Server
+        console.log('Starting Server...')
+        START_SERVER()
+    } catch (error) {
+    }
+})()
 
 const server = http.createServer(app);
 

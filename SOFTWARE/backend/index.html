@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Control Panel</title>
 </head>
+
 <body>
     <h2>Control Panel</h2>
     <label>
@@ -25,23 +27,32 @@
     <button onclick="sendControlData()">Update State</button>
     <p id="response"></p>
 
-    <script>function sendControlData() {
+    <script>
+        function sendControlData() {
             const relay = document.getElementById("relay").checked;
             const fan = parseInt(document.getElementById("fan").value);
             const door = document.getElementById("door").checked;
 
-    fetch("http://localhost:8080//fan-relay-servo", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ relay, fan, door })
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("response").innerText = JSON.stringify(data, null, 2);
-            })
-            .catch(error => {
-                document.getElementById("response").innerText = "Error: " + error;
-            });
-        }</script>
+            fetch("http://localhost:8080//fan-relay-servo", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        relay,
+                        fan,
+                        door
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("response").innerText = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById("response").innerText = "Error: " + error;
+                });
+        }
+    </script>
 </body>
+
 </html>

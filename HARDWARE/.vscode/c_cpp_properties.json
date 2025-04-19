@@ -10,6 +10,8 @@
             "includePath": [
                 "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/include",
                 "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/src",
+                "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/lib/global",
+                "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/.pio/libdeps/esp32doit-devkit-v1/Adafruit NeoPixel",
                 "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/.pio/libdeps/esp32doit-devkit-v1/DIYables_IRcontroller/src",
                 "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/.pio/libdeps/esp32doit-devkit-v1/IRremote/src",
@@ -267,7 +269,6 @@
                 "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                 "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                 "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
-                "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                 "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                 "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                 "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",
@@ -279,6 +280,8 @@
                 "path": [
                     "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/include",
                     "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/src",
+                    "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/lib/global",
+                    "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/.pio/libdeps/esp32doit-devkit-v1/Adafruit NeoPixel",
                     "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/.pio/libdeps/esp32doit-devkit-v1/DIYables_IRcontroller/src",
                     "D:/DADN/PlatformIO/Projects/YOLOHOME/HARDWARE/.pio/libdeps/esp32doit-devkit-v1/IRremote/src",
@@ -536,7 +539,6 @@
                     "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/SPI/src",
                     "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/SPIFFS/src",
                     "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/SimpleBLE/src",
-                    "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src",
                     "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/USB/src",
                     "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Update/src",
                     "C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/WebServer/src",

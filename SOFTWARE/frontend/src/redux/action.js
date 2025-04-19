@@ -17,8 +17,12 @@ export const logout = () => {
 export const accountAction = (state = null, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
+            console.log(action.user)
+            const accountString = JSON.stringify(action.user);
+            localStorage.setItem('user', accountString);
             return action.user;
         case LOGOUT:
+            localStorage.removeItem('user');
             return null;
         default:
             return state;

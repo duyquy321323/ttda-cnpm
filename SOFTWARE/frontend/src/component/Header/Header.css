@@ -11,6 +11,13 @@
     padding: 45px 50px;
 }
 
+.container--header .container--header__left{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 33px;
+}
+
 .container--header .container--header__right{
     display: flex;
     justify-content: space-between;
@@ -27,4 +34,8 @@
 
 .container--header .content:hover{
     cursor: pointer;
+}
+
+.container--header p {
+    font-size: 20px;
 }

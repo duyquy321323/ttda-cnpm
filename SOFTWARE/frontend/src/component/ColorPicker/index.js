@@ -2,18 +2,17 @@ import { Box, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import { useState } from "react";
 
 const colors = [
-  { name: "Black", value: "#000000" },
-  { name: "White", value: "#FFFFFF" },
-  { name: "Blue", value: "#0000FF" },
-  { name: "Purple", value: "#A020F0" },
-  { name: "Green", value: "#008000" },
-  { name: "Orange", value: "#FFA500" },
-  { name: "Red", value: "#FF0000" },
-  { name: "Yellow", value: "#FFD700" },
+  { name: "black", value: "#000000" },
+  { name: "white", value: "#FFFFFF" },
+  { name: "blue", value: "#0000FF" },
+  { name: "purple", value: "#A020F0" },
+  { name: "green", value: "#008000" },
+  { name: "orange", value: "#FFA500" },
+  { name: "red", value: "#FF0000" },
+  { name: "yellow", value: "#FFD700" },
 ];
 
-export default function ColorPicker() {
-  const [selectedColor, setSelectedColor] = useState("#A020F0");
+export default function ColorPicker({handleChange, selectedColor}) {
 
   return (
     <Box
@@ -37,7 +36,7 @@ export default function ColorPicker() {
 
 <RadioGroup
   value={selectedColor}
-  onChange={(e) => setSelectedColor(e.target.value)}
+  onChange={handleChange}
   sx={{
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)", // Chia thành 2 cột bằng nhau
@@ -48,7 +47,8 @@ export default function ColorPicker() {
         {colors.map((color) => (
           <FormControlLabel
             key={color.value}
-            value={color.value}
+            name="color"
+            value={color.name}
             control={
               <Radio
                 sx={{

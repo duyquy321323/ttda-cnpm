@@ -1,4 +1,5 @@
 .pio/build/esp32doit-devkit-v1/src/main.cpp.o: src/main.cpp \
+ lib/global/global.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src/WiFi.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/Print.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/WString.h \
@@ -194,17 +195,6 @@
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/WiFi/src/WiFiUdp.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/Udp.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/cbuf.h \
- include/timer.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/driver/include/driver/timer.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/soc/include/soc/timer_periph.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/soc/esp32/include/soc/timer_group_reg.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/soc/esp32/include/soc/timer_group_struct.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/soc/esp32/include/soc/periph_defs.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/timer_types.h \
- include/sensor.h .pio/libdeps/esp32doit-devkit-v1/DHT20/DHT20.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
- C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
- .pio/libdeps/esp32doit-devkit-v1/LiquidCrystal_I2C/LiquidCrystal_I2C.h \
  .pio/libdeps/esp32doit-devkit-v1/Adafruit\ IO\ Arduino/src/AdafruitIO_WiFi.h \
  .pio/libdeps/esp32doit-devkit-v1/Adafruit\ IO\ Arduino/src/wifi/AdafruitIO_ESP32.h \
  .pio/libdeps/esp32doit-devkit-v1/Adafruit\ IO\ Arduino/src/AdafruitIO.h \
@@ -274,10 +264,12 @@
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/mbedtls/port/include/aes/esp_aes.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/hal/include/hal/aes_types.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/tools/sdk/esp32/include/mbedtls/mbedtls/include/mbedtls/error.h \
- include/remote.hpp include/rgb.h \
  .pio/libdeps/esp32doit-devkit-v1/Adafruit\ NeoPixel/Adafruit_NeoPixel.h \
- include/timer.h include/fan.h include/servoControl.h \
+ .pio/libdeps/esp32doit-devkit-v1/DHT20/DHT20.h \
+ C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Wire/src/Wire.h \
+ C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal.h \
+ .pio/libdeps/esp32doit-devkit-v1/LiquidCrystal_I2C/LiquidCrystal_I2C.h \
  .pio/libdeps/esp32doit-devkit-v1/ESP32Servo/src/ESP32Servo.h \
  .pio/libdeps/esp32doit-devkit-v1/ESP32Servo/src/ESP32PWM.h \
  C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/cores/esp32/esp32-hal-ledc.h \
- include/relay.h
+ C:/Users/Admin/.platformio/packages/framework-arduinoespressif32/libraries/Ticker/src/Ticker.h

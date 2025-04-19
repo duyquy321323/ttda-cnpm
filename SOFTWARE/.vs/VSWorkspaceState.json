@@ -3,14 +3,13 @@
     "",
     "\\backend",
     "\\backend\\src",
-    "\\backend\\src\\controllers",
-    "\\backend\\src\\routes",
-    "\\backend\\src\\services",
+    "\\backend\\src\\models",
     "\\frontend",
     "\\frontend\\src",
     "\\frontend\\src\\page",
-    "\\frontend\\src\\page\\Environment"
+    "\\frontend\\src\\page\\Environment",
+    "\\frontend\\src\\page\\LightRBG"
   ],
-  "SelectedNode": "\\backend\\src\\controllers\\environmentController.js",
+  "SelectedNode": "\\backend\\.env",
   "PreviewInSolutionExplorer": false
 }

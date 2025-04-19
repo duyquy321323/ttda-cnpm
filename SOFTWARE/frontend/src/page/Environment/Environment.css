@@ -85,7 +85,7 @@
     gap: 25px;
 }
 
-.container--environment .container--slide .align-left .right .bottom{
+.container--environment .container--slide .align-left .right .bottom, .container--environment .container--slide .align-left{
     color: #FF3B30;
     text-align: left;
     font-size: 22px;

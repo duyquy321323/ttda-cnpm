@@ -5,19 +5,19 @@ require("dotenv").config();
 
 
 
-const AIO_USERNAME = process.env.AIO_USERNAME;
-const AIO_KEY = process.env.AIO_KEY;
+const AIO_USERNAME1 = process.env.AIO_USERNAME1;
+const AIO_KEY1 = process.env.AIO_KEY1;
 
-const client = mqtt.connect(`mqtt://io.adafruit.com`, {
-    username: AIO_USERNAME,
-    password: AIO_KEY,
+const client1 = mqtt.connect(`mqtt://io.adafruit.com`, {
+    username: AIO_USERNAME1,
+    password: AIO_KEY1,
     reconnectPeriod: 5000,
 });
 
 const FEEDS = {
-    temperature: `${AIO_USERNAME}/feeds/${process.env.TEMP_FEED}`,
-    humidity: `${AIO_USERNAME}/feeds/${process.env.HUMID_FEED}`,
-    light: `${AIO_USERNAME}/feeds/${process.env.LIGHT_FEED}`,
+    temperature: `${AIO_USERNAME1}/feeds/${process.env.TEMP_FEED}`,
+    humidity: `${AIO_USERNAME1}/feeds/${process.env.HUMID_FEED}`,
+    light: `${AIO_USERNAME1}/feeds/${process.env.LIGHT_FEED}`,
 };
 
 let latestData = {
@@ -26,14 +26,14 @@ let latestData = {
     light: null,
 };
 
-client.on("connect", () => {
+client1.on("connect", () => {
     console.log("Connected to MQTT broker");
-    client.subscribe(Object.values(FEEDS), (err) => {
+    client1.subscribe(Object.values(FEEDS), (err) => {
         if (err) console.error("Failed to subscribe:", err);
     });
 });
 
-client.on("message", async (topic, message) => {
+client1.on("message", async (topic, message) => {
     const value = parseFloat(message.toString());
 
     if (topic === FEEDS.temperature) latestData.temperature = value;
@@ -59,4 +59,22 @@ client.on("message", async (topic, message) => {
 
 const getLatestEnvironmentData = () => latestData;
 
-module.exports = { getLatestEnvironmentData };
+// lấy nhiệt độ cách đây 24h
+const getTemperature24h = async () => {
+    const data = await EnvironmentData.getTemperature24h();
+    return data;
+};
+
+// Lấy humidity cách đây 24h
+const getHumidity24h = async () => {
+    const data = await EnvironmentData.getHumidity24h();
+    return data;
+};
+
+// Lấy ánh sáng cách đây 24h
+const getLight24h = async () => {
+    const data = await EnvironmentData.getLight24h();
+    return data;
+};
+
+module.exports = { getLatestEnvironmentData, getTemperature24h, getHumidity24h, getLight24h };

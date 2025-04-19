@@ -1,34 +1,11 @@
-#include <WiFi.h>
-#include "pins_arduino.h"
-#include <timer.h>
-#include <sensor.h>
-#include <remote.hpp>
-#include <string.h>
-#include <relay.h>
-#include <fan.h>
-#include <rgb.h>
+#include "global.h"
 //#include <IRremote.hpp>
-// Thông tin WiFi
-const char* WIFI_SSID = "ACLAB";
-const char* WIFI_PASS = "ACLAB2023";
 
-// Thông tin Adafruit IO
-#define AIO_USERNAME    "annnnnguyen"
-#define AIO_KEY         "aio_tAEf87cR1FLylljKIgli9MWwpGmn"
-// Khởi tạo Adafruit IO
-AdafruitIO_WiFi io(AIO_USERNAME, AIO_KEY, WIFI_SSID, WIFI_PASS);
-AdafruitIO_Feed *temperatureFeed = io.feed("DHT20_TEMPERATURE");
-AdafruitIO_Feed *humidityFeed = io.feed("DHT20_HUMIDITY");
-AdafruitIO_Feed *lightFeed = io.feed("LIGHT_SENSOR");
-AdafruitIO_Feed *relayFeed = io.feed("RELAY");
-AdafruitIO_Feed *servoFeed = io.feed("SERVO_DOOR");
-AdafruitIO_Feed *rgbFeed = io.feed("LED_RGB");
-AdafruitIO_Feed *fanFeed = io.feed("MINI_FAN");
-AdafruitIO_Feed *remoteFeedfan = io.feed("MINI_FAN");
-AdafruitIO_Feed *autorgb = io.feed("LED_RGB_AUTO");
-AdafruitIO_Feed *remoteFeedrgb = io.feed("LED_RGB");
-AdafruitIO_Feed *passwordFeed = io.feed("PASSWORD");
-AdafruitIO_Feed *timer_off = io.feed("TIME_OFF");
+
+void timerCallback() {
+    timerRun();
+    SCH_Update();
+}
 
 void sendData(){
     updateData();
@@ -47,6 +24,7 @@ void sendData(){
 
 
 void feedSetup(){
+    io1.connect();
     io.connect();
     servoFeed->onMessage(servoControl);
     servoFeed->get();
@@ -62,6 +40,10 @@ void feedSetup(){
     passwordFeed->onMessage(passAuthorized);
     timer_off->get();
     timer_off->onMessage(timerControl);
+    autodoor->get();
+    autodoor->onMessage(servoAuto);
+    autofan->get();
+    autofan->onMessage(fanAuto);
 }
 
 
@@ -85,26 +67,30 @@ void setup() {
     NeoPixel.begin();
 
     sendData();
-    // setTimer(1, false, &dataTimer1, 6000, timerRun2);
-    setTimer(0, true, &dataTimer, 30000, timerRun1);
+    SCH_Init();
+    //SCH_Add_Task(fsm_auto, 0, 1);
+    SCH_Add_Task(fsm_manual, 0, 10);
+    myTimer.attach(1.0, timerCallback);
+    setTimer1(3);
 }
 
 
 void loop() {
     io.run();
-    if (sendDataFlag) {
+    io1.run();
+    if (timer_flag1 == 1) {
         sendData();
-        sendDataFlag = false;
+        setTimer1(30);
     }
-    if (check == 1){
-        setTimer(1, false, &dataTimer1, 2000, timerRun2);
-        check = 0;
-        Serial.print("OFF");
-    }
-    if (offFlag) {
+    if (timer_flag2 == 1) {
         turnoffLed();
-        offFlag = false;
+        rgbFeed->save("#000000");
+        timer_flag2 = 0;
     }
-    autoLed();
+    //fsm();
+    fsm_auto();
+    //fsm_manual();
+    SCH_Dispatch_Tasks();
     controlRemote();
+    //Serial.println(digitalRead(pirPin));
 }
