@@ -15,11 +15,11 @@ extern const char* WIFI_SSID;
 extern const char* WIFI_PASS;
 
 //Adafruit IO
-#define AIO_USERNAME    ""
-#define AIO_KEY         ""
+#define AIO_USERNAME    "" \\Your AIO_USERNAME
+#define AIO_KEY         "" \\Your AIO_KEY
 
-#define AIO_USERNAME1    ""
-#define AIO_KEY1         ""
+#define AIO_USERNAME1    "" \\Your AIO_USERNAME
+#define AIO_KEY1         "" \\Your AIO_KEY
 extern AdafruitIO_WiFi io;
 extern AdafruitIO_WiFi io1;
 extern AdafruitIO_Feed *temperatureFeed;

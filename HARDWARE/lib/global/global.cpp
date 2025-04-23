@@ -19,8 +19,8 @@ AdafruitIO_Feed *remoteRGB = io.feed("LED_RGB");
 AdafruitIO_Feed *remoteDoor = io.feed("SERVO_DOOR");
 AdafruitIO_Feed *remoteRelay = io.feed("RELAY");
 
-const char* WIFI_SSID = "";
-const char* WIFI_PASS = "";
+const char* WIFI_SSID = "";//Your wifi ssid
+const char* WIFI_PASS = "";//Your wifi password
 //FAN
 int miniFanPin = P10;
 int stateFan = 0;
