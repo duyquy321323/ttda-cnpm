@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\backend",
+    "\\backend\\src",
+    "\\backend\\src\\models",
+    "\\frontend",
+    "\\frontend\\src",
+    "\\frontend\\src\\page",
+    "\\frontend\\src\\page\\Environment",
+    "\\frontend\\src\\page\\LightRBG"
+  ],
+  "SelectedNode": "\\backend\\.env",
+  "PreviewInSolutionExplorer": false
+}

@@ -1,0 +1,9 @@
+madhephaestus/ESP32Servo@^3.0.6
+z3t0/IRremote@^4.4.1
+marcoschwartz/LiquidCrystal_I2C@^1.1.4
+beegee-tokyo/DHT sensor library for ESPx@^1.19
+adafruit/Adafruit IO Arduino@^4.3.0
+robtillaart/DHT20@^0.3.1
+adafruit/Adafruit MQTT Library@^2.5.9
+diyables/DIYables_IRcontroller@^1.0.0
+adafruit/DHT sensor library@^1.4.6
